@@ -90,6 +90,25 @@ function displayUserNameFromURL() {
     }
 }
 
+// URLパラメータからユーザー名を取得してタイトルを更新
+function updateTitleWithUserName() {
+    const userName = getURLParameter('user');
+    const titleElement = document.querySelector('.main-title');
+    
+    if (titleElement) {
+        if (userName) {
+            titleElement.textContent = `${userName}の冒険記録`;
+        } else {
+            // URLパラメータがない場合は、保存されたユーザー名を使用
+            const savedUserName = userManager.getCurrentUserName();
+            if (savedUserName && savedUserName !== '冒険者') {
+                titleElement.textContent = `${savedUserName}の冒険記録`;
+            } else {
+                titleElement.textContent = 'りくの冒険記録';
+            }
+        }
+    }
+}
 // ログインフォームの初期化
 function initLogin() {
     const loginForm = document.getElementById('loginForm');
@@ -181,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
             initDashboard();
             break;
         case 'worksheet.html':
-            displayUserNameFromURL();
+            updateTitleWithUserName();
             break;
     }
 });
