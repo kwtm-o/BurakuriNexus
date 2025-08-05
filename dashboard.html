@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイページ - りくの冒険記録</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <main class="main-content">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">🏠 マイページ</h1>
+                <p class="dashboard-welcome">おかえりなさい、<span id="userNameDisplay">冒険者</span>さん！</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-icon">📝</div>
+                    <h3>ワークシート</h3>
+                    <p>今日の学習目標を記録しましょう</p>
+                    <button id="worksheetBtn" class="btn btn-primary">ワークシートを開く</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">📊</div>
+                    <h3>学習記録</h3>
+                    <p>これまでの学習履歴を確認できます</p>
+                    <button class="btn btn-secondary" disabled>準備中</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>目標管理</h3>
+                    <p>長期的な学習目標を設定・管理します</p>
+                    <button class="btn btn-secondary" disabled>準備中</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>設定</h3>
+                    <p>アカウント設定やプロフィール編集</p>
+                    <button class="btn btn-secondary" disabled>準備中</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div id="footer-container"></div>
+    
+    <script src="assets/js/main.js"></script>
+    <script>
+        loadComponents();
+        initDashboard();
+    </script>
+</body>
+</html>

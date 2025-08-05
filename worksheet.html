@@ -76,8 +76,7 @@
         .main-title {
             font-size: 30px;
             font-weight: 1500;
-                        color: #ffffff;
-
+            color: #ffffff;
             text-shadow: 2px 2px 2px #1B5E20;
             margin: 0px auto;
             letter-spacing: 10px;
@@ -230,7 +229,7 @@
             margin-top: 20px;
             margin-bottom: 16px;
             padding: 15px;
-            background: linear-gradient(135deg, #def3fe, #ede6d5); /* 明るく淡い水色 */
+            background: linear-gradient(135deg, #def3fe, #ede6d5);
             border: 2px solid #4169E1;
             border-radius: 8px;
             font-size: 18px;
@@ -253,8 +252,7 @@
             text-align: center;
         }
 
-        .print-button {
-            top: 20px;
+        .print-button, .back-button {
             background: #4CAF50;
             color: white;
             border: none;
@@ -265,10 +263,23 @@
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-button {
+            background: #2196F3;
         }
         
         .print-button:hover {
             background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .back-button:hover {
+            background: #1976D2;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
@@ -279,7 +290,7 @@
                 padding: 0;
             }
             
-            .print-button {
+            .print-button, .back-button {
                 display: none;
             }
             
@@ -319,7 +330,7 @@
         
         <div class="content">            
             <div class="date-section">
-                <div class="date-label">　 What’s today’s date?</div>
+                <div class="date-label">　 What's today's date?</div>
                 <input type="text" class="date-input" placeholder="例：2025年1月15日" />
             </div>
             
@@ -335,7 +346,10 @@
 何でも自由に書いてね！"></textarea>
             </div>
             
-            
+            <div class="name-section">
+                <div class="name-title">冒険者の名前</div>
+                <div class="name-display" id="worksheetUserName">冒険者</div>
+            </div>
             
             <div class="encouragement">
                 ✨ さあ、冒険に出かけよう！今日の目標を達成しよう！ ✨
@@ -343,10 +357,12 @@
         </div>
     </div>
     <div class="button-container">
+        <a href="dashboard.html" class="back-button">🏠 マイページに戻る</a>
         <button class="print-button" onclick="window.print()">🖨️ 印刷する</button>
     </div>
 
     
+    <script src="assets/js/main.js"></script>
     <script>
         // 日付を自動で今日の日付に設定
         document.addEventListener('DOMContentLoaded', function() {
@@ -356,6 +372,9 @@
             const month = today.getMonth() + 1;
             const day = today.getDate();
             dateInput.value = `${year}年${month}月${day}日`;
+            
+            // URLパラメータからユーザー名を取得して表示
+            displayUserNameFromURL();
         });
         
         // テキストエリアの自動リサイズ
@@ -367,4 +386,3 @@
     </script>
 </body>
 </html>
-

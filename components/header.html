@@ -1,0 +1,34 @@
+<header class="header">
+    <div class="header-content">
+        <a href="index.html" class="logo">🗡️ りくの冒険記録</a>
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <!-- JavaScriptで動的に生成 -->
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<script>
+    // ヘッダーのナビゲーションを動的に生成
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.getElementById('navLinks');
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        
+        if (navLinks) {
+            if (isLoggedIn) {
+                // ログイン後のナビゲーション
+                navLinks.innerHTML = `
+                    <li><a href="dashboard.html">マイページ</a></li>
+                    <li><a href="#" onclick="userManager.logout()">ログアウト</a></li>
+                `;
+            } else {
+                // ログイン前のナビゲーション
+                navLinks.innerHTML = `
+                    <li><a href="login.html">ログイン</a></li>
+                    <li><a href="signup.html">新規登録</a></li>
+                `;
+            }
+        }
+    });
+</script>
