@@ -324,7 +324,7 @@
     <div class="worksheet-container">
         <div class="header">
             <h1 class="emoji">🗡️</h1>
-            <h1 class="main-title">りくの冒険記録</h1>
+            <h1 class="main-title" id="worksheetTitle">りくの冒険記録</h1>
             <h1 class="emoji">⛏️</h1>
         </div>
         
@@ -344,11 +344,6 @@
         ・コマンドや機能の実験をしたい
                 
 何でも自由に書いてね！"></textarea>
-            </div>
-            
-            <div class="name-section">
-                <div class="name-title">冒険者の名前</div>
-                <div class="name-display" id="worksheetUserName">冒険者</div>
             </div>
             
             <div class="encouragement">
@@ -374,7 +369,7 @@
             dateInput.value = `${year}年${month}月${day}日`;
             
             // URLパラメータからユーザー名を取得して表示
-            displayUserNameFromURL();
+            updateWorksheetTitle();
         });
         
         // テキストエリアの自動リサイズ
@@ -383,6 +378,26 @@
             this.style.height = 'auto';
             this.style.height = Math.max(200, this.scrollHeight) + 'px';
         });
+        
+        // ワークシートのタイトルを更新する関数
+        function updateWorksheetTitle() {
+            const userName = getURLParameter('user');
+            const titleElement = document.getElementById('worksheetTitle');
+            
+            if (titleElement) {
+                if (userName) {
+                    titleElement.textContent = `${userName}の冒険記録`;
+                } else {
+                    // URLパラメータがない場合は、保存されたユーザー名を使用
+                    const savedUserName = userManager.getCurrentUserName();
+                    if (savedUserName && savedUserName !== '冒険者') {
+                        titleElement.textContent = `${savedUserName}の冒険記録`;
+                    } else {
+                        titleElement.textContent = 'りくの冒険記録';
+                    }
+                }
+            }
+        }
     </script>
 </body>
 </html>
