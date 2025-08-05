@@ -346,6 +346,11 @@
 何でも自由に書いてね！"></textarea>
             </div>
             
+            <div class="name-section">
+                <div class="name-title">冒険者の名前</div>
+                <div class="name-display" id="worksheetUserName">冒険者</div>
+            </div>
+            
             <div class="encouragement">
                 ✨ さあ、冒険に出かけよう！今日の目標を達成しよう！ ✨
             </div>
@@ -368,8 +373,8 @@
             const day = today.getDate();
             dateInput.value = `${year}年${month}月${day}日`;
             
-            // URLパラメータからユーザー名を取得してタイトルに反映
-            updateTitleWithUserName();
+            // URLパラメータからユーザー名を取得して表示
+            displayUserNameFromURL();
         });
         
         // テキストエリアの自動リサイズ
